@@ -6,37 +6,26 @@ import CartContainer from './components/CartContainer';
 import cartItems from './cart-items';
 
 // redux stuff
-// store - store data, think of state
-
-// reducer - function that used to update store
-// two arguments - state, action
-// action - what happened / what update
-// return updated or old state
-
 import { createStore } from 'redux';
-
-// store.getState()
-
-// reducer
-const reducer = (state, action) => {
-  console.log({ state, action });
-  return state;
-};
+import { DECREASE, INCREASE } from './actions';
+import reducer from './reducer';
 
 // initial store
 const initialStore = {
-  count: 0,
+  cart: cartItems,
+  total: 0,
+  amount: 0,
 };
 
 // store
 const store = createStore(reducer, initialStore);
-console.log(store.getState());
+
 function App() {
   // cart setup
 
   return (
     <main>
-      <Navbar cart={store.getState()} />
+      <Navbar />
       <CartContainer cart={cartItems} />
     </main>
   );
